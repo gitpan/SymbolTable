@@ -1,0 +1,62 @@
+
+
+SymbolTable - An easy interface to symbol tables ( no eval() and no typeglobs )
+
+You can use SymbolTable to export subroutines, convert someone else's 
+package variable into a constant, change your own subroutines, and hack
+and slash at perl's symbol table without a single call to eval and without
+using a single typeglob.
+
+
+	# print a representation of all package names current used.
+  	use SymbolTable;
+
+  	my $st = SymbolTable->New('PACKAGE', 'main');
+
+	sub ShowPackages
+	{
+		my ($symbol_table, $indent)=@_;
+	
+		while( my($subpkgname, $subpkgsymtab)= each(%$symbol_table))
+			{
+			print $indent.$subpkgname."\n";
+			ShowPackages($subpkgsymtab, $indent."\t");
+			}
+	}
+
+	ShowPackages($st, "\t");
+
+When I ran the above example, it printed out the text below. Note that
+package Data::Dumper translates into a package 'Data' containing a package 
+'Dumper'. Here's my output:
+
+	attributes
+	DB
+	Data
+		Dumper
+	overload
+	UNIVERSAL
+	DynaLoader
+	Exporter
+		Heavy
+	warnings
+	IO
+		Handle
+	strict
+	Carp
+		Heavy
+	XSLoader
+	mypackage
+		subpackage
+			belowpackage
+	SymbolTable
+		Tie
+
+
+Have fun.
+
+Copyright (c) 2002, Greg London. All Rights Reserved.
+This module is free software. It may be used, redistributed
+and/or modified under the terms of the Perl Artistic License
+  (see http://www.perl.com/perl/misc/Artistic.html)
+

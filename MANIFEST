@@ -1,6 +1,7 @@
 Changes
 MANIFEST
 Makefile.PL
+README
 SymbolTable.pm
 test.pl
 examples/DumpTheDumper.pm
