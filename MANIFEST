@@ -1,0 +1,14 @@
+Changes
+MANIFEST
+Makefile.PL
+SymbolTable.pm
+test.pl
+examples/DumpTheDumper.pm
+examples/dumpthedumper.pl
+examples/make_scalar_into_constant.pl
+examples/modify_a_scalar_value.pl
+examples/names_of_scalars_in_current_package.pl
+examples/package_main_contains_packages.pl
+examples/package_mypackage_contains_packages.pl
+examples/print_a_scalar_value.pl
+examples/show_all_packages_from_main_down.pl
